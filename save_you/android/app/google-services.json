@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "842297142285",
+    "firebase_url": "https://hack20-8d9cc.firebaseio.com",
+    "project_id": "hack20-8d9cc",
+    "storage_bucket": "hack20-8d9cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842297142285:android:330b69868fcc33c57d3944",
+        "android_client_info": {
+          "package_name": "com.kingTech.saveyou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842297142285-inm3hl34gfdudn8thvu6gvapuj3l7snn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcOVeQFg00FdSC3fNCJHbpPGqv2J9tLAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842297142285-inm3hl34gfdudn8thvu6gvapuj3l7snn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
