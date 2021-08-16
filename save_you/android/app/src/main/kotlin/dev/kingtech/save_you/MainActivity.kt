@@ -1,4 +1,4 @@
-package com.kingTech.saveyou
+package dev.kingtech.save_you
 
 import io.flutter.embedding.android.FlutterActivity
 

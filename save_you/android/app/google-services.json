@@ -1,34 +1,108 @@
 {
   "project_info": {
-    "project_number": "842297142285",
-    "firebase_url": "https://hack20-8d9cc.firebaseio.com",
-    "project_id": "hack20-8d9cc",
-    "storage_bucket": "hack20-8d9cc.appspot.com"
+    "project_number": "1043497232461",
+    "firebase_url": "https://experiments-344b6-default-rtdb.firebaseio.com",
+    "project_id": "experiments-344b6",
+    "storage_bucket": "experiments-344b6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:842297142285:android:330b69868fcc33c57d3944",
+        "mobilesdk_app_id": "1:1043497232461:android:c8ad3fec0681ca7235d404",
         "android_client_info": {
-          "package_name": "com.kingTech.saveyou"
+          "package_name": "com.kingtech.flutter_firebase_phoneauth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "842297142285-inm3hl34gfdudn8thvu6gvapuj3l7snn.apps.googleusercontent.com",
+          "client_id": "1043497232461-ea4r0t02v3pvbhe6ndc36mlipc6r4l99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kingtech.flutter_firebase_phoneauth",
+            "certificate_hash": "a85c04d377c13699f6866c5be6532409479e5666"
+          }
+        },
+        {
+          "client_id": "1043497232461-pi489kseo3e8aapvithmiu7t8ggcjmcf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCcOVeQFg00FdSC3fNCJHbpPGqv2J9tLAs"
+          "current_key": "AIzaSyCaQpOvZWWogQDgnYezkffiRWKOIokEuJ8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "842297142285-inm3hl34gfdudn8thvu6gvapuj3l7snn.apps.googleusercontent.com",
+              "client_id": "1043497232461-pi489kseo3e8aapvithmiu7t8ggcjmcf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043497232461:android:4dc58efde57bf2b535d404",
+        "android_client_info": {
+          "package_name": "com.techmet.phoneathorization"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043497232461-8dvjlqspct9fe5cnb9gg7mmfdh3bk969.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techmet.phoneathorization",
+            "certificate_hash": "388db4c0c2330ee494cf9a19195b0d55573bc334"
+          }
+        },
+        {
+          "client_id": "1043497232461-pi489kseo3e8aapvithmiu7t8ggcjmcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaQpOvZWWogQDgnYezkffiRWKOIokEuJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043497232461-pi489kseo3e8aapvithmiu7t8ggcjmcf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043497232461:android:608967a2c5c0379f35d404",
+        "android_client_info": {
+          "package_name": "dev.kingtech.save_you"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043497232461-pi489kseo3e8aapvithmiu7t8ggcjmcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaQpOvZWWogQDgnYezkffiRWKOIokEuJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043497232461-pi489kseo3e8aapvithmiu7t8ggcjmcf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,6 +1,6 @@
-# saveyou
+# save_you
 
-Flutter Application for #Hack20 based on theme Saving the Planet, This app is for showing you what is the current rate of pollution on google map
+A new Flutter project.
 
 ## Getting Started
 
