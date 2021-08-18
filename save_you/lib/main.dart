@@ -117,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: Text(
                       "Share",
                       style: TextStyle(color: Colors.blueAccent),
-                    )),
+                    ),),
                 onTap: () {
                   Share.share('https://kingtechnologies.in');
                 }),
@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => Kn(),
-                  )),
+                  ),),
             ),
             SizedBox(
               height: 60,
@@ -171,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => AirTrack(),
-                  )),
+                  ),),
             )
           ],
         ),
@@ -223,7 +223,7 @@ class _KnState extends State<Kn> {
                               title: data["Note"],
                               data: data["Data"],
                             ),
-                          )),
+                          ),),
                       child: Container(
                         margin: EdgeInsets.all(10.0),
                         padding: EdgeInsets.all(7.0),
@@ -389,7 +389,7 @@ class _DataState extends State<Data> {
           child: Text(
             widget.data,
             style: TextStyle(fontSize: 25),
-          )),
+          ),),
     );
   }
 }
