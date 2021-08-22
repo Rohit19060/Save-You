@@ -58,7 +58,7 @@
 1. Clone the repository
 
 ```Bash
-git clone https://github.com/Rohit19060/kings-clock.git
+git clone https://github.com/Rohit19060/Save-You.git
 ```
 2. Go into the Project Directory
    
