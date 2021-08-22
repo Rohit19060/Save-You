@@ -110,14 +110,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             InkWell(
                 child: ListTile(
-                    trailing: Icon(
-                      Icons.share,
-                      color: Colors.redAccent,
-                    ),
-                    title: Text(
-                      "Share",
-                      style: TextStyle(color: Colors.blueAccent),
-                    ),),
+                  trailing: Icon(
+                    Icons.share,
+                    color: Colors.redAccent,
+                  ),
+                  title: Text(
+                    "Share",
+                    style: TextStyle(color: Colors.blueAccent),
+                  ),
+                ),
                 onTap: () {
                   Share.share('https://kingtechnologies.in');
                 }),
@@ -149,10 +150,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(fontSize: 30),
               ),
               onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Kn(),
-                  ),),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Kn(),
+                ),
+              ),
             ),
             SizedBox(
               height: 60,
@@ -168,10 +170,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(fontSize: 30),
               ),
               onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AirTrack(),
-                  ),),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AirTrack(),
+                ),
+              ),
             )
           ],
         ),
@@ -203,47 +206,42 @@ class _KnState extends State<Kn> {
         decoration: BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.linearToSrgbGamma(),
-            image: AssetImage("images/1.jpg"),
+            image: AssetImage("assets/images/1.jpg"),
             fit: BoxFit.cover,
           ),
         ),
         child: StreamBuilder<QuerySnapshot>(
-            stream: db.collection("Notes").snapshots(),
+            stream: db.collection("Note").snapshots(),
             builder: (BuildContext context,
                 AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
-              if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasData) {
                 return ListView(
                   children: snapshot.data!.docs.map((doc) {
                     final data = doc.data() as Map;
-                    return InkWell(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Data(
-                              title: data["Note"],
-                              data: data["Data"],
-                            ),
-                          ),),
-                      child: Container(
-                        margin: EdgeInsets.all(10.0),
-                        padding: EdgeInsets.all(7.0),
-                        decoration: BoxDecoration(
-                          color: wh,
-                          border: Border.all(color: bl),
-                          borderRadius: BorderRadius.circular(20),
+                    return Container(
+                      margin: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(7.0),
+                      decoration: BoxDecoration(
+                        color: wh,
+                        border: Border.all(color: bl),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: ListTile(
+                        title: Text(
+                          data["Note"].toString(),
+                          style: TextStyle(fontSize: 22),
                         ),
-                        child: ListTile(
-                          title: Text(
-                            data["Note"].toString(),
-                            style: TextStyle(fontSize: 22),
-                          ),
-                        ),
+                        subtitle: Text(data["TimeStamp"]),
                       ),
                     );
                   }).toList(),
                 );
               } else {
-                return SizedBox();
+                return Container();
               }
             }),
       ),
@@ -304,7 +302,7 @@ class _KnState extends State<Kn> {
                     onPressed: () {
                       if (formName.currentState!.validate()) {
                         formName.currentState!.save();
-                        db.collection("Notes").add({
+                        db.collection("Note").add({
                           'Note': '$title',
                           'Data': '$blog',
                           'TimeStamp': DateTime.now(),
@@ -354,42 +352,6 @@ class _AirTrackState extends State<AirTrack> {
           )
         ],
       ),
-    );
-  }
-}
-
-class Data extends StatefulWidget {
-  Data({Key? key, required this.title, required this.data}) : super(key: key);
-  final String title;
-  final String data;
-
-  @override
-  _DataState createState() => _DataState();
-}
-
-class _DataState extends State<Data> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Text(
-          widget.title,
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-      body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.white,
-          padding: EdgeInsets.all(17.0),
-          child: Text(
-            widget.data,
-            style: TextStyle(fontSize: 25),
-          ),),
     );
   }
 }
