@@ -1,7 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,27 +15,31 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    King(),
+    const King(),
   );
 }
 
 class King extends StatelessWidget {
+  const King({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Kn(),
+    return const MaterialApp(
+      home: Notes(),
     );
   }
 }
 
-class Kn extends StatefulWidget {
+class Notes extends StatefulWidget {
+  const Notes({Key? key}) : super(key: key);
+
   @override
-  _KnState createState() => _KnState();
+  _NotesState createState() => _NotesState();
 }
 
-class _KnState extends State<Kn> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  var _nameFieldController = TextEditingController();
+class _NotesState extends State<Notes> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _nameFieldController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +48,7 @@ class _KnState extends State<Kn> {
         elevation: 10,
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               decoration: BoxDecoration(),
               accountName: Text(
                 "Srishti Jain",
@@ -67,14 +71,14 @@ class _KnState extends State<Kn> {
               ),
             ),
             ListTile(
-              trailing: Icon(
+              trailing: const Icon(
                 Icons.star,
                 color: Colors.indigoAccent,
               ),
               title: RichText(
                 text: TextSpan(
                     text: "Visit Us",
-                    style: TextStyle(color: Colors.indigo),
+                    style: const TextStyle(color: Colors.indigo),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         launch(
@@ -87,7 +91,7 @@ class _KnState extends State<Kn> {
                 Share.share(
                     'https://multi-chat-platform-ef4dc.firebaseapp.com');
               },
-              child: ListTile(
+              child: const ListTile(
                   trailing: Icon(
                     Icons.share,
                     color: Colors.indigoAccent,
@@ -106,7 +110,7 @@ class _KnState extends State<Kn> {
                 );
                 Navigator.of(context).push(router);
               },
-              child: ListTile(
+              child: const ListTile(
                 trailing: Icon(
                   Icons.account_box,
                   color: Colors.indigoAccent,
@@ -123,9 +127,9 @@ class _KnState extends State<Kn> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => _scaffoldKey.currentState?.openDrawer(),
-          icon: Icon(Icons.menu, color: Colors.redAccent),
+          icon: const Icon(Icons.menu, color: Colors.redAccent),
         ),
-        actions: [
+        actions: const [
           Tooltip(
             child: Icon(
               Icons.help_outline,
@@ -137,7 +141,7 @@ class _KnState extends State<Kn> {
         ],
         centerTitle: true,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "Technology Blog",
           style: TextStyle(color: Colors.black),
         ),
@@ -154,8 +158,8 @@ class _KnState extends State<Kn> {
                   children: snapshot.data!.docs.map((doc) {
                     final docData = doc.data() as Map;
                     return Container(
-                      margin: EdgeInsets.all(10.0),
-                      padding: EdgeInsets.all(7.0),
+                      margin: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(7.0),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black, width: 2),
                         borderRadius: BorderRadius.circular(30),
@@ -165,16 +169,16 @@ class _KnState extends State<Kn> {
                         child: ListTile(
                           title: Text(
                             "Name : ${docData['Name']} \nTitle : ${docData['Title']}",
-                            style:
-                                TextStyle(fontSize: 16, color: Colors.black54),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.black54),
                           ),
                           subtitle: Text(
                             'Blog : ${docData['Blog']}',
-                            style:
-                                TextStyle(color: Colors.black87, fontSize: 22),
+                            style: const TextStyle(
+                                color: Colors.black87, fontSize: 22),
                           ),
                           trailing: IconButton(
-                            icon: Tooltip(
+                            icon: const Tooltip(
                               message: "Delete Blog",
                               child: Icon(
                                 Icons.remove_circle_outline,
@@ -191,7 +195,7 @@ class _KnState extends State<Kn> {
                   }).toList(),
                 );
               } else {
-                return SizedBox();
+                return const SizedBox();
               }
             }),
       ),
@@ -213,13 +217,13 @@ class _KnState extends State<Kn> {
             builder: (BuildContext context) => AlertDialog(
               content: Form(
                 key: formName,
-                child: Container(
+                child: SizedBox(
                   height: 290,
                   child: Column(
                     children: [
                       TextFormField(
                         autofocus: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Name",
                           labelStyle: TextStyle(fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(),
@@ -233,11 +237,11 @@ class _KnState extends State<Kn> {
                         },
                         onSaved: (value) => name = value!,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Title",
                           labelStyle: TextStyle(fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(),
@@ -251,11 +255,11 @@ class _KnState extends State<Kn> {
                         },
                         onSaved: (value1) => title = value1!,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Blog",
                           labelStyle: TextStyle(fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(),
@@ -302,7 +306,7 @@ class _KnState extends State<Kn> {
 
 class NextScreen extends StatefulWidget {
   final String name;
-  NextScreen({Key? key, required this.name}) : super(key: key);
+  const NextScreen({Key? key, required this.name}) : super(key: key);
   @override
   _NextScreenState createState() => _NextScreenState();
 }
@@ -316,17 +320,17 @@ class _NextScreenState extends State<NextScreen> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(Icons.arrow_back, color: Colors.redAccent),
+          icon: const Icon(Icons.arrow_back, color: Colors.redAccent),
         ),
       ),
       body: Center(
         child: Container(
-          margin: EdgeInsets.only(left: 18.0, right: 18.0),
+          margin: const EdgeInsets.only(left: 18.0, right: 18.0),
           child: SizedBox(
             height: 220.0,
             child: Card(
               child: Column(
-                children: [
+                children: const [
                   ListTile(
                     leading: Icon(
                       Icons.account_box,

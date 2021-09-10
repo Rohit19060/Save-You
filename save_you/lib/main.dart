@@ -1,25 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-final db = FirebaseFirestore.instance;
-String? name, title, blog;
-final formName = GlobalKey<FormState>();
-
-Color wh = Colors.white, bl = Colors.blue;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    MyApp(),
+    const MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,13 +24,13 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           canvasColor: Colors.white),
-      home: MyHomePage(title: 'Save You'),
+      home: const MyHomePage(title: 'Save You'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -50,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 10,
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               decoration: BoxDecoration(),
               accountName: Text(
                 "Rohit Jain",
@@ -72,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               decoration: BoxDecoration(),
               accountName: Text(
                 "Garima methi",
@@ -96,11 +91,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             InkWell(
               child: ListTile(
-                  trailing: Icon(
+                  trailing: const Icon(
                     Icons.star,
                     color: Colors.redAccent,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Visit Us",
                     style: TextStyle(color: Colors.blueAccent),
                   ),
@@ -109,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   }),
             ),
             InkWell(
-                child: ListTile(
+                child: const ListTile(
                   trailing: Icon(
                     Icons.share,
                     color: Colors.redAccent,
@@ -126,13 +121,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
       body: Center(
@@ -142,37 +137,37 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 elevation: 10,
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(60),
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(60),
               ),
-              child: Text(
+              child: const Text(
                 'Guide',
                 style: TextStyle(fontSize: 30),
               ),
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Kn(),
+                  builder: (context) => const Notes(),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 elevation: 10,
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(60),
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(60),
               ),
-              child: Text(
+              child: const Text(
                 'Air Tracer',
                 style: TextStyle(fontSize: 30),
               ),
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AirTrack(),
+                  builder: (context) => const AirTrack(),
                 ),
               ),
             )
@@ -183,27 +178,34 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class Kn extends StatefulWidget {
+class Notes extends StatefulWidget {
+  const Notes({Key? key}) : super(key: key);
+
   @override
-  _KnState createState() => _KnState();
+  _NotesState createState() => _NotesState();
 }
 
-class _KnState extends State<Kn> {
+class _NotesState extends State<Notes> {
+  Color wh = Colors.white, bl = Colors.blue;
+  final db = FirebaseFirestore.instance;
+  String? name, title, blog;
+  final formName = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         centerTitle: true,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "Guide",
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: wh,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.linearToSrgbGamma(),
             image: AssetImage("assets/images/1.jpg"),
@@ -215,7 +217,7 @@ class _KnState extends State<Kn> {
             builder: (BuildContext context,
                 AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (snapshot.hasData) {
@@ -223,8 +225,8 @@ class _KnState extends State<Kn> {
                   children: snapshot.data!.docs.map((doc) {
                     final data = doc.data() as Map;
                     return Container(
-                      margin: EdgeInsets.all(10.0),
-                      padding: EdgeInsets.all(7.0),
+                      margin: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(7.0),
                       decoration: BoxDecoration(
                         color: wh,
                         border: Border.all(color: bl),
@@ -233,7 +235,7 @@ class _KnState extends State<Kn> {
                       child: ListTile(
                         title: Text(
                           data["Note"].toString(),
-                          style: TextStyle(fontSize: 22),
+                          style: const TextStyle(fontSize: 22),
                         ),
                         subtitle: Text(data["TimeStamp"]),
                       ),
@@ -260,7 +262,7 @@ class _KnState extends State<Kn> {
                     children: [
                       TextFormField(
                         autofocus: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Title",
                           labelStyle: TextStyle(fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(),
@@ -275,7 +277,7 @@ class _KnState extends State<Kn> {
                         onSaved: (value) => title = value,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Data",
                           labelStyle: TextStyle(fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(),
@@ -314,7 +316,7 @@ class _KnState extends State<Kn> {
             ),
           );
         },
-        child: Icon(Icons.add_circle_outline),
+        child: const Icon(Icons.add_circle_outline),
         backgroundColor: wh,
         foregroundColor: bl,
       ),
@@ -323,6 +325,8 @@ class _KnState extends State<Kn> {
 }
 
 class AirTrack extends StatefulWidget {
+  const AirTrack({Key? key}) : super(key: key);
+
   @override
   _AirTrackState createState() => _AirTrackState();
 }
@@ -334,13 +338,13 @@ class _AirTrackState extends State<AirTrack> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [
+        children: const [
           GoogleMap(
             myLocationButtonEnabled: true,
             mapType: MapType.hybrid,
             compassEnabled: true,
             initialCameraPosition: CameraPosition(
-              target: const LatLng(28.6375729, 75.3657894),
+              target: LatLng(28.6375729, 75.3657894),
               zoom: 2,
             ),
           ),
