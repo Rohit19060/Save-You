@@ -60,8 +60,9 @@
 ```Bash
 git clone https://github.com/Rohit19060/Save-You.git
 ```
+
 2. Go into the Project Directory
-   
+
 3. Install dependencies
 
 ```Bash
@@ -69,7 +70,7 @@ flutter pub get
 ```
 
 4. Run the app
-   
+
 ```Bash
 flutter run/Flutter run --release
 ```
@@ -83,7 +84,7 @@ flutter pub get
 ```
 
 2. Run the app
-   
+
 ```Bash
 flutter run/Flutter run --release
 ```
@@ -91,10 +92,10 @@ flutter run/Flutter run --release
 ## 👷 Built with
 
 - Flutter
+
 ## 📂 Directory Structure
 
-> [`main.dart`](https://github.com/Rohit19060/Save-You/blob/main/save_you/lib/main.dart "Main File"): Single file for the Awesome Clock
-
+> [`main.dart`](https://github.com/Rohit19060/Save-You/blob/main/save_you/lib/main.dart "Main File"): File the main Content
 
 ## 🎊 Future Updates
 
